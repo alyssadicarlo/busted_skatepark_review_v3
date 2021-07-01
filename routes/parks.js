@@ -9,6 +9,7 @@ router.get('/:park_id', async (req, res, next) => {
         parkData = await Park.getParkData();
     const Reviews = new ReviewsModel(null, parkId),
         reviewData = await Reviews.getParkReviews();
+        console.log("REVIEW DATA: ", reviewData);
 
     res.render('template', {
         locals: {
@@ -18,7 +19,7 @@ router.get('/:park_id', async (req, res, next) => {
             is_logged_in: req.session.is_logged_in,
         },
         partials: {
-            body: 'partials/single',
+            body: 'partials/single-park',
         },
     });
 });
